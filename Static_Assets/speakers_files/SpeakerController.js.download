@@ -1,0 +1,14 @@
+﻿'use strict';
+
+speakerApp.controller('SpeakerController',
+    function SpeakerController($scope, speakerData) {
+        $scope.speakers = speakerData.speakers;
+       
+        $scope.init = function(year) {
+            speakerData.getSpeakerList(year, function (speakerList) {
+                $scope.speakers.list = speakerList;
+            });
+        };
+
+    }
+);

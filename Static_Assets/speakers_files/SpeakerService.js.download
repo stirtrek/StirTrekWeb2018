@@ -1,0 +1,28 @@
+﻿'use strict';
+
+speakerApp.factory('speakerData', function($http, $log) {
+    return {
+        getSpeakerList: function (year, successCB) {
+            thatConfApp.showPleaseWait();
+
+            $http({
+                method: 'Get',
+                url: '/api3/speakers/getspeakers',
+                params: {year: year}
+                }).
+                success(function(data, status, headers, config) {
+                    $log.info(data, status, headers(), config);
+                    thatConfApp.hidePleaseWait();
+                    successCB(data);
+                }).
+                error(function(data, status, headers, config) {
+                    $log.warn(data, status, headers(), config);
+                    thatConfApp.hidePleaseWait();
+                });
+        },
+
+        speakers: {
+            list: []
+        }
+    };
+});
