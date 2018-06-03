@@ -1,0 +1,35 @@
+﻿( function ( $, undefined ) { 
+    $(document).ready(function () {
+
+
+        $("#speakerButton").click(function () {
+            window.location.href = "/Sessions/CallForSpeakers/";
+            return;
+        });
+
+        $("#votingButton").click(function () {
+            window.location.href = "/Sessions/Voting";
+            return;
+        });
+
+        $("#buyTicketsButton").click(function () {
+            window.location.href = "/Home/TicketRegistration/";
+            return;
+        });
+
+        $("#sponsorButton").click(function () {
+            window.location.href = "/Sponsorship/index/";
+            return;
+        });
+
+        Modernizr.load({
+            test: Modernizr.input.placeholder,
+            nope: "/Scripts/libs/jquery.html5support/jquery.html5support.min.js",
+            complete: function () {
+                $.placeholder();
+            }
+        });
+
+    });
+
+})(jQuery)
